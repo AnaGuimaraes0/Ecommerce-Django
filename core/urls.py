@@ -20,5 +20,5 @@ from categorias import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(categoria.urls)),
+    path('', include('categoria'.urls)),
 ]
