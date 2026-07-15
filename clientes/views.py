@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Cliente
 
-# Create your views here.
+def clientes_view(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'clientes/index.html', {'clientes': clientes})
