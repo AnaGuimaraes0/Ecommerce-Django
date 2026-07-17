@@ -1,9 +1,20 @@
-<header>
-    <h1>Logo</h1>
+<header class="header">
+    <h1>Ecommerce</h1>
     <nav>
         <ul class="menu">
             <li><a href="{% url 'home' %}">Início</a></li>
             <li><a href="{% url 'clientes' %}">Clientes</a></li>
+            {% if user.is_authenticated %}
+                <span>Olá, <strong>{{user.username}}</strong>!</span>
+
+                {% if perms.loja.view_relatorio_vendas %}
+                <a href="{% url 'painel_financeiro' %}">Painel Financeiro</a>
+                {% endif %}
+
+                <a href="{% url 'logout_cliente' %}">Sair</a>
+            {% else %}
+                <a href="{% url 'login_cliente' %}">Fazer Login</a>
+            {% endif %}
         </ul>
     </nav>
 </header>
